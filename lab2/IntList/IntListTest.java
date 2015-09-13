@@ -37,8 +37,44 @@ public class IntListTest {
      *  Anything can happen to A. 
      */
 
-    //TODO:  Create testSquareListRecursive()
-    //TODO:  Create testDcatenate and testCatenate
+    @Test
+    public void testSquareListRecursive()
+    {
+        IntList L = IntList.list(1, 2, 3);
+        IntList result = IntList.squareListRecursive(L);
+        assertEquals(IntList.list(1, 2, 3), L);
+        assertEquals(IntList.list(1, 4, 9), result);
+    }
+
+    @Test
+    public void testDCatenate()
+    {
+        IntList A = IntList.list(1, 2, 3);
+        IntList B = IntList.list(11, 22, 33);
+        IntList result = IntList.dcatenate(A, B);
+        assertEquals(IntList.list(1, 2, 3, 11, 22, 33), A);
+        assertEquals(IntList.list(1, 2, 3, 11, 22, 33), result);
+
+        A = IntList.list();
+        result = IntList.dcatenate(A, B);
+        assertEquals(IntList.list(), A);
+        assertEquals(IntList.list(11, 22, 33), result);
+    }
+
+    @Test
+    public void testCatenate()
+    {
+        IntList A = IntList.list(1, 2, 3);
+        IntList B = IntList.list(11, 22, 33);
+        IntList result = IntList.catenate(A, B);
+        assertEquals(IntList.list(1, 2, 3), A);
+        assertEquals(IntList.list(1, 2, 3, 11, 22, 33), result);
+
+        A = IntList.list();
+        result = IntList.catenate(A, B);
+        assertEquals(IntList.list(), A);
+        assertEquals(IntList.list(11, 22, 33), result);
+    }
 
     /* Run the unit tests in this file. */
     public static void main(String... args) {
