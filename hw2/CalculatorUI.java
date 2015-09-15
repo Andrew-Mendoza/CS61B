@@ -6,21 +6,16 @@ public class CalculatorUI
 	{
 		Calculator c = new Calculator();
 
-		//"\\d++\\s*[\\+\\*]\\s+\\-?\\d++\\s+"
-
 		while (true)
 		{
 			System.out.print("> ");
-			String input = StdIn.readLine().replaceAll(" ", "");
-			//String firstInput = StdIn.readString();
-			//String secondInput = StdIn.readString();
-			//String equation = firstInput + secondInput + StdIn.readLine();
+			String input = StdIn.readLine();
 
 			if (input.equalsIgnoreCase("quit"))
 				break;
 			else if (input.equalsIgnoreCase("dump"))
 				c.printAllHistory();
-			else if (input.matches("history\\d++"))
+			else if (input.matches("history\\s++\\d++"))
 			{
 				String[] inputParts = input.split("\\s++");
 				c.printHistory(Integer.parseInt(inputParts[1]));

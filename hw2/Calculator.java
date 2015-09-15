@@ -3,7 +3,6 @@ import list.EquationList;
 public class Calculator {
 	// YOU MAY WISH TO ADD SOME FIELDS
 	private EquationList eqHistoryList;
-	private EquationList lastEqEntry;
 	private int numEquationsSaved;
 
 	/**
@@ -44,7 +43,6 @@ public class Calculator {
 	 **/
 	public void saveEquation(String equation, int result) {
 		eqHistoryList = new EquationList(equation, result, eqHistoryList);
-		lastEqEntry = eqHistoryList;
 		numEquationsSaved += 1;
 	}
 
@@ -117,7 +115,10 @@ public class Calculator {
 	 * @return the product of all of the results in history
 	 **/
 	public int cumulativeProduct() {
-		int totalProduct = 0;
+		if (eqHistoryList == null)
+			return 0;
+
+		int totalProduct = 1;
 		EquationList ptr = eqHistoryList;
 		while (ptr != null)
 		{
